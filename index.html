@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17324d">
+    <title>THERMOCONFORT | Évaluation thermique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="#" class="logo">THERMO<span>CONFORT</span></a>
+
+    <div class="header-status">
+        <span class="status-dot"></span>
+        Système d'évaluation actif
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <span class="eyebrow">ENVIRONNEMENT &amp; BIEN-ÊTRE</span>
+        <h1>Évaluation du confort thermique</h1>
+        <p>
+            Analysez la température et l'humidité grâce à un système
+            d'évaluation basé sur la logique floue.
+        </p>
+    </section>
+
+    <section class="dashboard">
+
+        <div class="left-column">
+
+            <!-- PARAMÈTRES ENVIRONNEMENTAUX -->
+            <div class="card input-card">
+
+                <div class="card-heading">
+                    <span class="heading-icon">☀</span>
+                    <div>
+                        <h2>Paramètres environnementaux</h2>
+                        <p class="description">
+                            Ajustez les conditions de votre environnement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TEMPÉRATURE -->
+                <div class="field">
+                    <div class="field-heading">
+                        <label for="temperature">Température</label>
+                        <span class="unit-label">Degrés Celsius</span>
+                    </div>
+
+                    <div class="input-wrapper temperature-input">
+                        <input
+                            type="number"
+                            id="temperature"
+                            min="0"
+                            max="50"
+                            step="0.5"
+                            value="25"
+                        >
+                        <span>°C</span>
+                    </div>
+
+                    <input
+                        type="range"
+                        id="temperature-range"
+                        min="0"
+                        max="50"
+                        step="0.5"
+                        value="25"
+                        aria-label="Ajuster la température"
+                    >
+
+                    <div class="range-labels">
+                        <span>0 °C</span>
+                        <span>50 °C</span>
+                    </div>
+                </div>
+
+                <!-- HUMIDITÉ -->
+                <div class="field">
+                    <div class="field-heading">
+                        <label for="humidite">Humidité relative</label>
+                        <span class="unit-label">Taux d'humidité</span>
+                    </div>
+
+                    <div class="input-wrapper humidity-input">
+                        <input
+                            type="number"
+                            id="humidite"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value="50"
+                        >
+                        <span>%</span>
+                    </div>
+
+                    <input
+                        type="range"
+                        id="humidite-range"
+                        min="0"
+                        max="100"
+                        step="1"
+                        value="50"
+                        aria-label="Ajuster l'humidité"
+                    >
+
+                    <div class="range-labels">
+                        <span>0 %</span>
+                        <span>100 %</span>
+                    </div>
+                </div>
+
+                <button id="evaluer" type="button">
+                    Évaluer le confort <span>→</span>
+                </button>
+
+                <p class="small-note">
+                    Les résultats sont calculés à partir des fonctions
+                    d'appartenance et des règles floues du système.
+                </p>
+            </div>
+
+            <!-- ILLUSTRATION -->
+            <div class="card illustration">
+                <div class="house-scene">
+
+                    <div class="scene-sun"></div>
+                    <div class="cloud cloud-one"></div>
+                    <div class="cloud cloud-two"></div>
+
+                    <svg
+                        class="house-drawing"
+                        viewBox="0 0 320 230"
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-label="Maison entourée de verdure"
+                    >
+                        <ellipse
+                            cx="160" cy="205" rx="125" ry="13"
+                            fill="#b9dfc9" opacity=".6"
+                        />
+
+                        <!-- Maison -->
+                        <path
+                            d="M64 103 L160 30 L256 103"
+                            fill="#e7a56c"
+                            stroke="#a9613d"
+                            stroke-width="7"
+                            stroke-linejoin="round"
+                        />
+
+                        <path
+                            d="M80 97 V190 H240 V97 L160 40 Z"
+                            fill="#fffaf0"
+                            stroke="#2d795f"
+                            stroke-width="4"
+                            stroke-linejoin="round"
+                        />
+
+                        <!-- Porte -->
+                        <rect
+                            x="140" y="132" width="40" height="58"
+                            rx="4"
+                            fill="#b8d9c8"
+                            stroke="#2d795f"
+                            stroke-width="3"
+                        />
+                        <circle cx="170" cy="162" r="2.5" fill="#2d795f"/>
+
+                        <!-- Fenêtre gauche -->
+                        <rect
+                            x="96" y="116" width="31" height="31"
+                            rx="4"
+                            fill="#ccecf2"
+                            stroke="#2d795f"
+                            stroke-width="3"
+                        />
+                        <path
+                            d="M111.5 116 V147 M96 131.5 H127"
+                            stroke="#2d795f"
+                            stroke-width="2"
+                        />
+
+                        <!-- Fenêtre droite -->
+                        <rect
+                            x="193" y="116" width="31" height="31"
+                            rx="4"
+                            fill="#ccecf2"
+                            stroke="#2d795f"
+                            stroke-width="3"
+                        />
+                        <path
+                            d="M208.5 116 V147 M193 131.5 H224"
+                            stroke="#2d795f"
+                            stroke-width="2"
+                        />
+
+                        <!-- Chemin -->
+                        <path
+                            d="M145 190 L130 218 H190 L175 190"
+                            fill="#e8ddc7"
+                        />
+
+                        <!-- Arbre gauche -->
+                        <path
+                            d="M40 195 L44 145 L52 145 L55 195"
+                            fill="#a66d49"
+                        />
+                        <circle cx="48" cy="137" r="20" fill="#73b78b"/>
+                        <circle cx="35" cy="145" r="12" fill="#91cda0"/>
+                        <circle cx="59" cy="147" r="13" fill="#4e9c71"/>
+
+                        <!-- Arbuste droit -->
+                        <path
+                            d="M269 194 L273 164 L281 164 L285 194"
+                            fill="#a66d49"
+                        />
+                        <circle cx="276" cy="158" r="17" fill="#73b78b"/>
+                        <circle cx="263" cy="166" r="11" fill="#91cda0"/>
+                        <circle cx="289" cy="166" r="11" fill="#4e9c71"/>
+
+                        <!-- Fleurs -->
+                        <circle cx="76" cy="194" r="4" fill="#e7a56c"/>
+                        <circle cx="70" cy="198" r="3" fill="#e7a56c"/>
+                        <circle cx="301" cy="195" r="4" fill="#d77f91"/>
+                    </svg>
+
+                    <div class="scene-label">
+                        <span></span>
+                        Un cadre de vie agréable
+                    </div>
+                </div>
+
+                <div class="house-caption">
+                    <h3 id="house-title">Un environnement confortable</h3>
+                    <p id="house-message">
+                        Une température agréable et une humidité équilibrée
+                        favorisent le bien-être.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+
+            <!-- RÉSULTAT PRINCIPAL -->
+            <div class="card result-card">
+
+                <div class="result-heading">
+                    <div>
+                        <span class="eyebrow">RÉSULTAT DE L'ANALYSE</span>
+                        <h2>Votre niveau de confort</h2>
+                        <p class="description">
+                            Évaluation selon les conditions saisies
+                        </p>
+                    </div>
+                    <span class="result-icon">✦</span>
+                </div>
+
+                <div class="score-area">
+
+                    <div class="score-circle" id="score-circle">
+                        <div class="score-content">
+                            <span id="score">0</span>
+                            <small>/100</small>
+                        </div>
+                    </div>
+
+                    <div class="score-text">
+                        <span class="result-caption">Niveau estimé</span>
+                        <h3 id="comfort-label">En attente</h3>
+                        <p id="result-description">
+                            Le résultat apparaîtra après l'évaluation.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="score-track">
+                    <div class="score-progress" id="score-progress"></div>
+                </div>
+
+                <div class="divider"></div>
+
+                <h3 class="section-title">Degrés d'appartenance</h3>
+                <p class="description">
+                    Ces valeurs indiquent le degré d'appartenance
+                    aux différentes catégories floues.
+                </p>
+
+                <!-- TEMPÉRATURE -->
+                <div class="membership-group">
+
+                    <div class="group-heading">
+                        <span class="category-icon temperature-icon">♨</span>
+                        <h4>Température</h4>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Froide</span>
+                            <strong id="froide-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill cold-fill"
+                                id="froide-bar"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Modérée</span>
+                            <strong id="moderee-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill moderate-fill"
+                                id="moderee-bar"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Chaude</span>
+                            <strong id="chaude-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill hot-fill"
+                                id="chaude-bar"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HUMIDITÉ -->
+                <div class="membership-group humidity-group">
+
+                    <div class="group-heading">
+                        <span class="category-icon humidity-icon">≈</span>
+                        <h4>Humidité relative</h4>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Faible</span>
+                            <strong id="faible-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill low-fill"
+                                id="faible-bar"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Moyenne</span>
+                            <strong id="moyenne-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill average-fill"
+                                id="moyenne-bar"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Élevée</span>
+                            <strong id="elevee-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill high-fill"
+                                id="elevee-bar"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATÉGORIES DE CONFORT -->
+                <div class="membership-group comfort-group">
+
+                    <div class="group-heading">
+                        <span class="category-icon comfort-icon">✦</span>
+                        <h4>Catégories de confort</h4>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Mauvais</span>
+                            <strong id="mauvais-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill bad-fill"
+                                id="mauvais-bar"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Moyen</span>
+                            <strong id="moyen-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill medium-fill"
+                                id="moyen-bar"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="membership-item">
+                        <div class="membership-info">
+                            <span>Bon</span>
+                            <strong id="bon-value">0.00</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill good-fill"
+                                id="bon-bar"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="small-note">
+                    Un degré de 0 signifie une absence d'appartenance ;
+                    un degré de 1 signifie une appartenance totale.
+                </p>
+            </div>
+
+            <!-- CONSEIL -->
+            <div class="card advice-card" id="advice-card">
+                <div class="advice-icon" id="advice-icon">✓</div>
+                <div>
+                    <span class="eyebrow">CONSEIL PERSONNALISÉ</span>
+                    <h3 id="advice-title">Recommandation</h3>
+                    <p id="advice">
+                        Ajustez les paramètres pour évaluer les conditions
+                        de confort thermique.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <span>THERMOCONFORT</span>
+        · Projet académique — Système d'évaluation par logique floue
+    </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
